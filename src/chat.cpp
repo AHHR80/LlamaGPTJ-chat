@@ -186,9 +186,9 @@ int main(int argc, char* argv[]) {
 
 
 
-    // set_console_color(con_st, PROMPT);
-    // std::cout << "\n" << params.prompt.c_str() << std::endl;
-    // set_console_color(con_st, DEFAULT);
+    set_console_color(con_st, PROMPT);
+    std::cout << "\n" << params.prompt.c_str() << std::endl;
+    set_console_color(con_st, DEFAULT);
 
     //default prompt template, should work with most instruction-type models
     std::string default_prefix = "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.";
@@ -207,9 +207,11 @@ int main(int argc, char* argv[]) {
         } else {
         	params.prompt = default_prefix + read_chat_log(params.load_log) + default_header + params.prompt;
         }
-    } else {
-    	params.prompt = default_prefix + default_header + params.prompt;
     }
+    // } else {
+    // 	// params.prompt = default_prefix + default_header + params.prompt;
+
+    // }
     
     //////////////////////////////////////////////////////////////////////////
     ////////////            PROMPT LAMBDA FUNCTIONS               ////////////
@@ -290,7 +292,9 @@ int main(int argc, char* argv[]) {
     //No-interactive mode. Get the answer once from prompt and print it.
     } else {
         if (params.use_animation){ stop_display = false; future = std::async(std::launch::async, display_frames); }
-        llmodel_prompt(model, read_prompt_with_out_tuple(params.load_template).c_str(), 
+        // llmodel_prompt(model, read_prompt_with_out_tuple(params.load_template).c_str(), 
+        // prompt_callback, response_callback, recalculate_callback, &prompt_context);
+        llmodel_prompt(model, params.prompt.c_str(), 
         prompt_callback, response_callback, recalculate_callback, &prompt_context);
         if (params.use_animation){ stop_display = true; future.wait(); stop_display = false; }
         if (params.save_log != ""){ save_chat_log(params.save_log, (params.prompt + default_footer).c_str(), answer.c_str()); }
