@@ -22,7 +22,7 @@ Since the program is made using c++ it should build and run on most Linux, MacOS
 
 ### Download
 ```sh
-git clone --recurse-submodules https://github.com/kuvaus/LlamaGPTJ-chat
+git clone --recurse-submodules https://github.com/AHHR80/LlamaGPTJ-chat
 cd LlamaGPTJ-chat
 ```
 You need to also download a model file, see [supported models](#gpt-j-llama-and-mpt-models) for details and links.
