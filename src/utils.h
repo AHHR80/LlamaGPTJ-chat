@@ -45,7 +45,7 @@ std::string read_prompt_with_out_tuple(const std::string& file_path2){
             allLines += line;
             lines.push_back(line);
         }
-        std::cout << allLines << std::endl;
+        // std::cout << allLines << std::endl;
         file.close();
     } else {
         std::cerr << "Unable to open the prompt template file." << std::endl;

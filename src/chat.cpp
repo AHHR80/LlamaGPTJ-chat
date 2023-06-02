@@ -186,8 +186,8 @@ int main(int argc, char* argv[]) {
 
 
 
-    set_console_color(con_st, PROMPT);
-    std::cout << "\n" << params.prompt.c_str() << std::endl;
+    // set_console_color(con_st, PROMPT);
+    // std::cout << "\n" << params.prompt.c_str() << std::endl;
     set_console_color(con_st, DEFAULT);
 
     //default prompt template, should work with most instruction-type models
