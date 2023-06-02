@@ -188,7 +188,7 @@ int main(int argc, char* argv[]) {
 
     // set_console_color(con_st, PROMPT);
     // std::cout << "\n" << params.prompt.c_str() << std::endl;
-    set_console_color(con_st, DEFAULT);
+    // set_console_color(con_st, DEFAULT);
 
     //default prompt template, should work with most instruction-type models
     std::string default_prefix = "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.";
@@ -196,9 +196,9 @@ int main(int argc, char* argv[]) {
     std::string default_footer = "\n### Response: ";
 
     //load prompt template from file instead
-    if (params.load_template != "") {
-        std::tie(default_prefix, default_header, default_footer) = read_prompt_template_file(params.load_template);
-    }
+    // if (params.load_template != "") {
+    //     std::tie(default_prefix, default_header, default_footer) = read_prompt_template_file(params.load_template);
+    // }
     
     //load chat log from a file
     if (params.load_log != "") {

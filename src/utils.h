@@ -34,7 +34,7 @@ void check_avx_support_at_startup() {
 std::string read_prompt_with_out_tuple(const std::string& file_path2){
     std::ifstream file(file_path2);
 
-    std::vector<std::string> lines;
+    // std::vector<std::string> lines;
     std::string line;
     std::string allLines = "";
 
@@ -43,7 +43,7 @@ std::string read_prompt_with_out_tuple(const std::string& file_path2){
     if (file.is_open()) {
         while (std::getline(file, line)) {
             allLines += line;
-            lines.push_back(line);
+            // lines.push_back(line);
         }
         // std::cout << allLines << std::endl;
         file.close();
