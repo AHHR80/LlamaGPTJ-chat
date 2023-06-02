@@ -31,6 +31,30 @@ void check_avx_support_at_startup() {
 ////////////            READ PROMPT TEMPLATE FILE             ////////////
 //////////////////////////////////////////////////////////////////////////
 
+std::string read_prompt_with_out_tuple(const std::string& file_path2){
+    std::ifstream file(file_path2);
+
+    std::vector<std::string> lines;
+    std::string line;
+    std::string allLines = "";
+
+
+    //store all lines of prompt template into a vector
+    if (file.is_open()) {
+        while (std::getline(file, line)) {
+            allLines += line;
+            lines.push_back(line);
+        }
+        std::cout << allLines << std::endl;
+        file.close();
+    } else {
+        std::cerr << "Unable to open the prompt template file." << std::endl;
+        std::cerr << "Reverting to default prompt template." << std::endl;
+        return "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response." + "\n### Prompt: " + "\n### Response: "; 
+    }
+    return allLines;
+}
+
 //This is a bit messy function but it should parse the template file into header, prompt, and footer.
 std::tuple<std::string, std::string, std::string> read_prompt_template_file(const std::string& file_path) {
     std::string prompt, header, footer;
@@ -38,10 +62,13 @@ std::tuple<std::string, std::string, std::string> read_prompt_template_file(cons
 
     std::vector<std::string> lines;
     std::string line;
+    std::string allLines = "";
+
 
     //store all lines of prompt template into a vector
     if (file.is_open()) {
         while (std::getline(file, line)) {
+            allLines += line
             lines.push_back(line);
         }
         file.close();
