@@ -39,9 +39,9 @@ void display_loading() {
                 if (stop_display){ break; }
         }
         
-         std::cout << "\r" << "               " << "\r" << std::flush;
+        //  std::cout << "\r" << "               " << "\r" << std::flush;
     }
-    std::cout << "\r" << " " << std::flush;
+    // std::cout << "\r" << " " << std::flush;
 
 }
 
@@ -94,12 +94,12 @@ int main(int argc, char* argv[]) {
 
     set_console_color(con_st, PROMPT);
     set_console_color(con_st, BOLD);
-    std::cout << APPNAME;
+    // std::cout << APPNAME;
     set_console_color(con_st, DEFAULT);
     set_console_color(con_st, PROMPT);
-    std::cout << " (v. " << VERSION << ")";
+    // std::cout << " (v. " << VERSION << ")";
     set_console_color(con_st, DEFAULT);
-    std::cout << "" << std::endl;
+    // std::cout << "" << std::endl;
     check_avx_support_at_startup();
 
 
@@ -151,7 +151,7 @@ int main(int argc, char* argv[]) {
 
 
     llmodel_model model = llmodel_model_create(params.model.c_str());
-    std::cout << "\r" << APPNAME << ": loading " << params.model.c_str()  << std::endl;
+    // std::cout << "\r" << APPNAME << ": loading " << params.model.c_str()  << std::endl;
     
     //bring back stderr for now
     dup2(stderr_copy, fileno(stderr));
@@ -170,7 +170,7 @@ int main(int argc, char* argv[]) {
         }
 
         std::cerr << "Error loading: " << params.model.c_str() << std::endl;
-        std::cout << "Press any key to exit..." << std::endl;
+        // std::cout << "Press any key to exit..." << std::endl;
         std::cin.get();
         return 0;
     } else {
@@ -178,7 +178,7 @@ int main(int argc, char* argv[]) {
             stop_display = true;
             future.wait();
         }
-        std::cout << "\r" << APPNAME << ": done loading!" << std::flush;   
+        // std::cout << "\r" << APPNAME << ": done loading!" << std::flush;   
     }
     //////////////////////////////////////////////////////////////////////////
     ////////////                /LOAD THE MODEL                   ////////////
@@ -186,9 +186,9 @@ int main(int argc, char* argv[]) {
 
 
 
-    set_console_color(con_st, PROMPT);
-    std::cout << "\n" << params.prompt.c_str() << std::endl;
-    set_console_color(con_st, DEFAULT);
+    // set_console_color(con_st, PROMPT);
+    // std::cout << "\n" << params.prompt.c_str() << std::endl;
+    // set_console_color(con_st, DEFAULT);
 
     //default prompt template, should work with most instruction-type models
     std::string default_prefix = "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.";
