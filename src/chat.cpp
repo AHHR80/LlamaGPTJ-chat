@@ -290,7 +290,7 @@ int main(int argc, char* argv[]) {
     //No-interactive mode. Get the answer once from prompt and print it.
     } else {
         if (params.use_animation){ stop_display = false; future = std::async(std::launch::async, display_frames); }
-        llmodel_prompt(model, read_prompt_with_out_tuple(params.load_template), 
+        llmodel_prompt(model, read_prompt_with_out_tuple(params.load_template)..c_str(), 
         prompt_callback, response_callback, recalculate_callback, &prompt_context);
         if (params.use_animation){ stop_display = true; future.wait(); stop_display = false; }
         if (params.save_log != ""){ save_chat_log(params.save_log, (params.prompt + default_footer).c_str(), answer.c_str()); }
