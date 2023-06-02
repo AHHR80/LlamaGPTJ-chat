@@ -50,7 +50,7 @@ std::string read_prompt_with_out_tuple(const std::string& file_path2){
     } else {
         std::cerr << "Unable to open the prompt template file." << std::endl;
         std::cerr << "Reverting to default prompt template." << std::endl;
-        return "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response." + "\n### Prompt: " + "\n### Response: "; 
+        return "### Instruction:\n The prompt below is a question to answer, a task to complete, or a conversation to respond to; decide which and write an appropriate response.\n### Prompt: \n### Response: "; 
     }
     return allLines;
 }
@@ -68,7 +68,7 @@ std::tuple<std::string, std::string, std::string> read_prompt_template_file(cons
     //store all lines of prompt template into a vector
     if (file.is_open()) {
         while (std::getline(file, line)) {
-            allLines += line
+            allLines += line;
             lines.push_back(line);
         }
         file.close();
