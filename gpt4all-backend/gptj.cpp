@@ -31,7 +31,7 @@ static const size_t MB = 1024*1024;
 
 struct gptj_hparams {
     int32_t n_vocab = 50400;
-    int32_t n_ctx   = 2048;
+    int32_t n_ctx   = 5000;
     int32_t n_embd  = 4096;
     int32_t n_head  = 16;
     int32_t n_layer = 28;
